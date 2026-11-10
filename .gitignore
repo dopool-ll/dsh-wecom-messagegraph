@@ -1,0 +1,41 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+config/*.json
+!config/*.example.json
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Local databases, captures, exports, and logs
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.wal
+*.shm
+*.log
+*.jsonl
+wecom-db-*/
+.wecom-export-*/
+backups/
+captures/
+results/
+
+# Dependencies and build output
+node_modules/
+__pycache__/
+*.py[cod]
+apps/macos/.build/
+apps/macos/.swiftpm/
+apps/macos/dist/
+plugins/dsh/dist/
+/.code-review-graph/
+
+# Operating system files
+.DS_Store
+Thumbs.db

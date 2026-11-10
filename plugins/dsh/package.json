@@ -1,0 +1,65 @@
+{
+  "name": "dsh-wecom-local",
+  "version": "0.1.17",
+  "private": true,
+  "description": "在 DeepSeek Harness 中浏览本机企业微信档案",
+  "type": "module",
+  "exports": {
+    ".": "./server/index.js",
+    "./client": "./dist/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "server/*.js",
+    "dist/client.js",
+    "dist/messagegraph.mjs",
+    "dist/wecom-core",
+    "dist/wecom-ocr",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dependencies": {
+    "silk-wasm": "3.7.1"
+  },
+  "bundledDependencies": [
+    "silk-wasm"
+  ],
+  "scripts": {
+    "build": "bun build.ts",
+    "pack": "bun build.ts && npm pack --pack-destination dist",
+    "check": "tsc --noEmit"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-tool"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@types/bun": "^1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "lucide-react": "1.70.0",
+    "react": "^19",
+    "react-dom": "^19",
+    "typescript": "^5.9"
+  },
+  "bundleDependencies": [
+    "silk-wasm"
+  ],
+  "bin": {
+    "messagegraph": "./dist/messagegraph.mjs"
+  }
+}
